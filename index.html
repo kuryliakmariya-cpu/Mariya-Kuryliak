@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        section{
+            width: 80%;
+            margin: 0 auto;
+        }
+        form{
+            display: flex;
+            justify-content: space-between;
+        }
+        input{
+            height: 35px;
+            width: 32%;
+            border-radius: 3px;
+            border: 1px solid rgba(207, 205, 205, 1);
+            margin: 10px 0;
+            font-size: 18px;
+            transition: .7s;
+            padding: 0 10px;
+        }
+        p{
+            margin: 3px 0;
+            font-size: 16px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+        }
+        h2{
+            font-size: 25px;
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            }
+        input[type=button]{
+            background-color: #34bd2d;
+            color:  white;
+            }
+        input[type=button]:hover{
+            background-color: #34bd2dbe;
+            color:  white;
+            transition: .7s;
+        }
+        #form3{
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <h2>Task move</h2>
+        <p>Значення переміщується з одного інпута в інший тільки якщо там є значенння</p>
+        <div>
+            <form action="#">
+                <input type="text" id="form1">
+                <input type="button" id="button" value="move">
+                <input type="text" id="form2">
+            </form>
+        </div>
+    </section>
+    <section>
+        <h2>Task placeholder</h2>
+        <p>Значення переміщується в placeholder тільки якщо там є значенння</p>
+        <form action="#">
+            <input type="text" id="form3">
+        </form>
+    </section>
+    <script src="script.js">
+        let getId = id => document.getElementById(id);
+        getId('button').addEventListener('click', () => {
+            if (getId('form1').value != '') {
+                getId('form2').value = getId('form1').value;
+                getId('form1').value = '';
+            }
+        });
+        /*blur --- втрата фокусу*/
+        getId('form3').addEventListener('blur', (e) => {
+            if (getId('form3').value != ''){
+                getId('form3').placeholder = getId('form3').value;
+                getId('form3').value = '';
+            }
+        });
+    </script>
+</body>
+
+</html>
